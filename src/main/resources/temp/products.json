@@ -2,7 +2,7 @@
   {
     "_id": "1",
     "name": "Airpods Wireless Bluetooth Headphones",
-    "image": "../../images/airpods.jpg",
+    "image": "airpods.jpg",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci error ut itaque asperiores? Debitis quibusdam eos doloremque odit inventore aut dolorum quas molestiae unde. Beatae similique id accusamus fuga!",
     "brand": "Apple",
     "category": "Electronics",
@@ -14,7 +14,7 @@
   {
     "_id": "2",
     "name": "iPhone 11 Pro 256GB Memory",
-    "image": "../../images/phone.jpg",
+    "image": "phone.jpg",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci error ut itaque asperiores? Debitis quibusdam eos doloremque odit inventore aut dolorum quas molestiae unde. Beatae similique id accusamus fuga!",
     "brand": "Apple",
     "category": "Electronics",
@@ -26,7 +26,7 @@
   {
     "_id": "3",
     "name": "Amazon Alex",
-    "image": "../../images/alexa.jpg",
+    "image": "alexa.jpg",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci error ut itaque asperiores? Debitis quibusdam eos doloremque odit inventore aut dolorum quas molestiae unde. Beatae similique id accusamus fuga!",
     "brand": "Amazon",
     "category": "Electronics",
@@ -38,7 +38,7 @@
   {
     "_id": "4",
     "name": "Came Cannon 80D",
-    "image": "../../images/camera.jpg",
+    "image": "camera.jpg",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci error ut itaque asperiores? Debitis quibusdam eos doloremque odit inventore aut dolorum quas molestiae unde. Beatae similique id accusamus fuga!",
     "brand": "Cannon",
     "category": "Electronics",
@@ -50,7 +50,7 @@
   {
     "_id": "5",
     "name": "Mouse Logitech",
-    "image": "../../images/mouse.jpg",
+    "image": "mouse.jpg",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci error ut itaque asperiores? Debitis quibusdam eos doloremque odit inventore aut dolorum quas molestiae unde. Beatae similique id accusamus fuga!",
     "brand": "Logitech",
     "category": "Electronics",
@@ -62,7 +62,7 @@
   {
     "_id": "6",
     "name": "Playstation 4",
-    "image": "../../images/playstation.jpg",
+    "image": "playstation.jpg",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci error ut itaque asperiores? Debitis quibusdam eos doloremque odit inventore aut dolorum quas molestiae unde. Beatae similique id accusamus fuga!",
     "brand": "Sony",
     "category": "Electronics",

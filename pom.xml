@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tech.pro</groupId>
-	<artifactId>api-techshop</artifactId>
+	<artifactId>techshop-backend</artifactId>
 	<version>1.0</version>
-	<name>api-techshop</name>
+	<name>techshop-backend</name>
 	<description>E-commerce that sells electronics devices online</description>
 	<url />
 	<licenses>

@@ -4,10 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiTechshopApplication {
+public class TechshopBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiTechshopApplication.class, args);
+		SpringApplication.run(TechshopBackendApplication.class, args); 
+		
+		
+		
+		
+		
 	}
 
 }
