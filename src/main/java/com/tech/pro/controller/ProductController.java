@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tech.model.Product;
+import com.tech.pro.exception.ResourceNotFoundException;
+import com.tech.pro.model.Product;
 import com.tech.pro.service.ProductService;
 
 @RestController
@@ -28,7 +29,7 @@ public class ProductController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> getProduct(@PathVariable String id) {
-		return ResponseEntity.ok(productService.findById(id).orElseThrow(() -> new RuntimeException("resource not found!")));
+		return ResponseEntity.ok(productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found!")));
 					
 	}
 	

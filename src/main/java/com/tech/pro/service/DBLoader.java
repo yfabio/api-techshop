@@ -13,8 +13,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tech.model.Product;
-import com.tech.model.User;
+import com.tech.pro.model.Product;
+import com.tech.pro.model.User;
 import com.tech.pro.repository.OrderRepository;
 import com.tech.pro.repository.ProductRepository;
 import com.tech.pro.repository.UserRepository;

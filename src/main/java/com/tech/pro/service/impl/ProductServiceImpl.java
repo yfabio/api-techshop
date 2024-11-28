@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tech.model.Product;
+import com.tech.pro.model.Product;
 import com.tech.pro.repository.ProductRepository;
 import com.tech.pro.service.ProductService;
 
