@@ -8,11 +8,6 @@ public class TechshopBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TechshopBackendApplication.class, args); 
-		
-		
-		
-		
-		
 	}
 
 }
