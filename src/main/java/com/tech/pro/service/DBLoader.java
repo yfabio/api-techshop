@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,6 +39,9 @@ public class DBLoader {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public List<Product> getProductsFromDummyFile() {
 		try {
@@ -62,7 +66,7 @@ public class DBLoader {
 		list.add(u1);
 
 		User u2 = new User();
-		u2.setName("Hohn Doe");
+		u2.setName("John Doe");
 		u2.setEmail("john@email.com");
 		u2.setPassword("123");
 		u2.setIsAdmin(Boolean.FALSE);
@@ -85,7 +89,11 @@ public class DBLoader {
 			productRepository.deleteAll();
 			userRepository.deleteAll();
 
-			List<User> insertedUsers = createUsers().stream().map(userRepository::insert).toList();
+			List<User> insertedUsers = createUsers().stream().map(user -> {
+				String password = user.getPassword();
+				user.setPassword(passwordEncoder.encode(password));
+				return userRepository.save(user);
+			}).toList();
 
 			User adminUser = insertedUsers.get(0);
 

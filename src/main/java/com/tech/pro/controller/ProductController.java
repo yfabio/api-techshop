@@ -2,7 +2,6 @@ package com.tech.pro.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,15 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tech.pro.exception.ResourceNotFoundException;
 import com.tech.pro.model.Product;
+import com.tech.pro.service.ImageService;
 import com.tech.pro.service.ProductService;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/products")
+@AllArgsConstructor
 public class ProductController {
-
 	
-	@Autowired
 	private ProductService productService;
+		
+	private ImageService imageService;
 	
 	@GetMapping
 	public ResponseEntity<List<Product>> getProducts() {		
@@ -29,9 +32,13 @@ public class ProductController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> getProduct(@PathVariable String id) {
-		return ResponseEntity.ok(productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found!")));
-					
+		return ResponseEntity.ok(productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found!")));					
 	}
 	
+	
+	@GetMapping(value = "/img/{imgName}")
+	public byte[] loadImage(@PathVariable String imgName){		
+		return imageService.getImage(imgName);
+	}
 
 }
