@@ -37,15 +37,6 @@ public class ConfigSecurity {
 		}).httpBasic(c -> {
 		});
 
-//			formLogin(f -> {
-//				f.loginPage("/login")					
-//				.failureUrl("/login-error")
-//				.successHandler(authenticationSuccessHandler())
-//				.permitAll();			
-//			}).logout(l -> {			
-//				l.logoutUrl("/logout")
-//				.permitAll();
-//			});	
 
 		return http.build();
 	}
