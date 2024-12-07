@@ -1,10 +1,9 @@
 package com.tech.pro.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,17 +19,37 @@ import lombok.AllArgsConstructor;
 public class UserController {
 
 	private UserService userService;
-		
-	@PostMapping("/register")
-	public ResponseEntity<User> registerUser(@RequestBody User user) {
-		return new ResponseEntity<User>(userService.registerUser(user), HttpStatus.CREATED);
-	}
-
+	
+	
+	
+	/**
+	 * Get user profile
+	 * @param id
+	 * 	 
+	 * PRIVATE 
+	 * @return
+	 */
 	@GetMapping("/profile/{id}")
 	public ResponseEntity<User> getUserProfile(@PathVariable String id) {
 		return ResponseEntity.ok(userService.getUserById(id));
 	}
 
+	
+	/**
+	 * Update user profile
+	 * PRIVATE
+	 * @param id	
+	 * @return
+	 */
+	@PutMapping("/profile/{id}")
+	public ResponseEntity<User> updateUserProfile(@PathVariable String id, @RequestBody User user) {
+		return ResponseEntity.ok(userService.updateUser(id,user));
+	}
+	
+	
+	
+	
+	
 	
 	
 }

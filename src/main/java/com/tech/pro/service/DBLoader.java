@@ -61,7 +61,7 @@ public class DBLoader {
 		u1.setName("Admin");
 		u1.setEmail("admin@email.com");
 		u1.setPassword("123");
-		u1.setIsAdmin(Boolean.TRUE);
+		u1.setAdmin(true);
 
 		list.add(u1);
 
@@ -69,14 +69,14 @@ public class DBLoader {
 		u2.setName("John Doe");
 		u2.setEmail("john@email.com");
 		u2.setPassword("123");
-		u2.setIsAdmin(Boolean.FALSE);
+		u2.setAdmin(false);
 		list.add(u2);
 
 		User u3 = new User();
 		u3.setName("Jane Doe");
 		u3.setEmail("jane@email.com");
 		u3.setPassword("123");
-		u3.setIsAdmin(Boolean.FALSE);
+		u3.setAdmin(false);
 		list.add(u3);
 
 		return list;

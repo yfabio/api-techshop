@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tech.pro.dto.JwtAuthDto;
 import com.tech.pro.dto.SingInDto;
 import com.tech.pro.dto.SingUpDto;
 import com.tech.pro.model.User;
+import com.tech.pro.security.JwtTokenProvider;
 import com.tech.pro.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -23,21 +25,38 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AuthController {
 
-	private AuthenticationManager authenticationManager;
-	
 	private UserService userService;
 	
+	private AuthenticationManager authenticationManager;
 	
+	private JwtTokenProvider jwtTokenProvider;
+	
+	
+	/**
+	 * Auth user & get token
+	 * route /api/users/signin
+	 * PUBLIC 
+	 * @param signUpDto
+	 * @return
+	 */
 	@PostMapping("/signin")
-	public ResponseEntity<String> singIn(@RequestBody SingInDto signInDto){
+	public ResponseEntity<JwtAuthDto> singIn(@RequestBody SingInDto signInDto){
 		
 		Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDto.getEmail(),signInDto.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(auth);
 		
-		return ResponseEntity.ok("User signed-in successfully!");
+		String token = jwtTokenProvider.generateToken(auth);
+				
+		return ResponseEntity.ok(new JwtAuthDto(token));
 	}
 	
+	/**
+	 * Register user
+	 * @param signUpDto
+	 * PUBLIC
+	 * @return
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity<?> signUp(@RequestBody SingUpDto signUpDto){
 		

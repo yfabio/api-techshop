@@ -40,7 +40,7 @@ public class User implements UserDetails, Serializable {
 
 	private String password;
 
-	private Boolean isAdmin;
+	private boolean isAdmin;
 
 	@CreatedDate
 	private LocalDateTime timestamps;

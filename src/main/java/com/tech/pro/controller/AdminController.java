@@ -24,25 +24,51 @@ public class AdminController {
 	private UserService userService;
 
 	
-	@PutMapping("/profile/{id}")
-	public ResponseEntity<User> updateUserProfile(@PathVariable String id, @RequestBody User user) {
-		return ResponseEntity.ok(userService.updateUser(id,user));
-	}
-
+	/**
+	 * get users
+	 * private
+	 * @return
+	 */
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> getUsers() {
 		return ResponseEntity.ok(userService.getAllUsers());
 	}
-
+	
+	/**
+	 * delete user
+	 * private
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteUser(@PathVariable String id) {
 		return ResponseEntity.ok(userService.deleteUser(id));
 	}
-
+	
+	/**
+	 * get user by id
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable String id) {
 		return ResponseEntity.ok(userService.getUserById(id));
 	}
+	
+	
+	/**
+	 * update user
+	 * @param id
+	 * @param user
+	 * @return
+	 */
+	@PutMapping("/profile/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user) {
+		return ResponseEntity.ok(userService.updateUser(id,user));
+	}
+	
+
+	
 
 	
 }

@@ -16,8 +16,6 @@ public interface UserService {
 	
 	User findByEmail(String email);
 	
-	boolean verify(String pwd, String hashPassword);
-
 	User updateUser(String id, User user);
 
 	boolean existUserByEmail(String email);
