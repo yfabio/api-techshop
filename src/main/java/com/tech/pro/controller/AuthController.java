@@ -47,8 +47,10 @@ public class AuthController {
 		SecurityContextHolder.getContext().setAuthentication(auth);
 		
 		String token = jwtTokenProvider.generateToken(auth);
-				
-		return ResponseEntity.ok(new JwtAuthDto(token));
+		
+		User user = User.class.cast(auth.getPrincipal());
+		
+		return ResponseEntity.ok(new JwtAuthDto(token,user));
 	}
 	
 	/**
@@ -68,10 +70,8 @@ public class AuthController {
 		user.setEmail(signUpDto.getEmail());
 		user.setPassword(signUpDto.getPassword());
 		user.setName(signUpDto.getName());
-		
-		userService.registerUser(user);
-		
-		return ResponseEntity.ok("User register successfully");
+				
+		return ResponseEntity.ok(userService.registerUser(user));
 	}
 	
 }
