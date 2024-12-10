@@ -1,5 +1,6 @@
 package com.tech.pro.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tech.pro.dto.OrderDto;
 import com.tech.pro.model.User;
 import com.tech.pro.service.UserService;
 
@@ -68,6 +70,48 @@ public class AdminController {
 	}
 	
 
+	
+	
+	/**
+	 * Update order to delivered
+	 * Private
+	 * @param id
+	 * @param delivered
+	 * @return
+	 */
+	@PutMapping("/orders/update/{id}")
+	public ResponseEntity<OrderDto> updateOrderToDelivered(@PathVariable String id,@RequestBody OrderDto orderDto){				
+		orderDto.setId(id);				
+		return ResponseEntity.ok(orderDto);
+	}
+	
+	/**
+	 * Get Order by id
+	 * Private
+	 */
+	@GetMapping("orders/{id}")
+	public ResponseEntity<OrderDto> getOrderById(@PathVariable String id){	
+		OrderDto orderDto = new OrderDto();
+		orderDto.setId(id);
+		return ResponseEntity.ok(orderDto);
+	}
+	
+	
+	/**
+	 * Get all orders
+	 * private
+	 * @param id
+	 * @param delivered
+	 * @return
+	 */
+	@GetMapping("/orders")
+	public ResponseEntity<List<OrderDto>> getAllOrders(){
+		List<OrderDto> orders = new ArrayList<>();
+		orders.add(new OrderDto("1234","delivered",true));
+		orders.add(new OrderDto("2342","delivered",false));
+		orders.add(new OrderDto("2132","not delivered",true));
+		return ResponseEntity.ok(orders);
+	}
 	
 
 	

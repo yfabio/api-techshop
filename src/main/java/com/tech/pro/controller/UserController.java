@@ -45,11 +45,6 @@ public class UserController {
 	public ResponseEntity<User> updateUserProfile(@PathVariable String id, @RequestBody User user) {
 		return ResponseEntity.ok(userService.updateUser(id,user));
 	}
-	
-	
-	
-	
-	
-	
+		
 	
 }
