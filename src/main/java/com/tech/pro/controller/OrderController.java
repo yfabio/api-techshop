@@ -1,6 +1,5 @@
 package com.tech.pro.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -13,18 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tech.pro.dto.OrderDto;
+import com.tech.pro.service.OrderService;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/orders")
+@AllArgsConstructor
 public class OrderController {
 
+	
+	private OrderService orderService;
 	
 	/**
 	 * Create order
 	 * Private
 	 */
 	@PostMapping
-	public ResponseEntity<OrderDto> createNewOrder(@RequestBody OrderDto orderDto){
+	public ResponseEntity<OrderDto> addOrderItems(@RequestBody OrderDto orderDto){
+		
+		orderDto = orderService.addOrderItems(orderDto);
+		
 		return ResponseEntity.ok(orderDto);		
 	}
 	
@@ -34,12 +42,22 @@ public class OrderController {
 	 * Private
 	 */
 	@GetMapping("/myorder/{id}")
-	public ResponseEntity<List<OrderDto>> getMyOrders(@PathVariable String id){
-		List<OrderDto> orders = new ArrayList<>();
-		OrderDto orderDto = new OrderDto();
-		orderDto.setId(id);
-		orders.add(orderDto);
-		return ResponseEntity.ok(orders);
+	public ResponseEntity<List<OrderDto>> getMyOrders(@PathVariable String id){		
+		return ResponseEntity.ok(orderService.findOrderById(id));
+	}
+	
+	
+	
+	/**
+	 * Update order to paid
+	 * 
+	 * Verify if the user's name and email are present
+	 * 
+	 * Private
+	 */
+	@GetMapping("/{id}")
+	public ResponseEntity<OrderDto> getOrderById(@PathVariable String id){		
+		return ResponseEntity.ok(orderService.getOrderById(id));
 	}
 	
 	
@@ -50,13 +68,13 @@ public class OrderController {
 	 * Private
 	 */
 	@PutMapping("update/{id}")
-	public ResponseEntity<OrderDto> updateOrderToPaid(@PathVariable String id, @RequestBody OrderDto orderDto){				
+	public ResponseEntity<OrderDto> updateOrderToPaid(@PathVariable String id, @RequestBody OrderDto orderDto){		
 		return ResponseEntity.ok(orderDto);
 	}
 	
 	
 	
 	
-	// movie: 55:00
+	
 	
 }

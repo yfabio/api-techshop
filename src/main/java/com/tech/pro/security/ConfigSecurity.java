@@ -37,8 +37,9 @@ public class ConfigSecurity {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		http.cors(c -> c.disable())
-			.csrf(csrf -> csrf.disable())
+		http.csrf(csrf -> {
+				csrf.disable();				
+			}).cors(c -> c.disable())
 			.exceptionHandling(c -> {
 				c.authenticationEntryPoint(jwtAuthenticationEntryPoint);
 			})

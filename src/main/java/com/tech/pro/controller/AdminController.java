@@ -81,7 +81,7 @@ public class AdminController {
 	 */
 	@PutMapping("/orders/update/{id}")
 	public ResponseEntity<OrderDto> updateOrderToDelivered(@PathVariable String id,@RequestBody OrderDto orderDto){				
-		orderDto.setId(id);				
+				
 		return ResponseEntity.ok(orderDto);
 	}
 	
@@ -92,7 +92,7 @@ public class AdminController {
 	@GetMapping("orders/{id}")
 	public ResponseEntity<OrderDto> getOrderById(@PathVariable String id){	
 		OrderDto orderDto = new OrderDto();
-		orderDto.setId(id);
+		
 		return ResponseEntity.ok(orderDto);
 	}
 	
@@ -107,9 +107,7 @@ public class AdminController {
 	@GetMapping("/orders")
 	public ResponseEntity<List<OrderDto>> getAllOrders(){
 		List<OrderDto> orders = new ArrayList<>();
-		orders.add(new OrderDto("1234","delivered",true));
-		orders.add(new OrderDto("2342","delivered",false));
-		orders.add(new OrderDto("2132","not delivered",true));
+	
 		return ResponseEntity.ok(orders);
 	}
 	
